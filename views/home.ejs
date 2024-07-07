@@ -1,11 +1,14 @@
 <%- include('_head.ejs'); %>
+<script src="/s/svg-inject.min.js"></script>
 
 <main>
 
-<object id="desks" data="/s/desks.svg" type="image/svg+xml">
-  <img src="/s/desks.svg" />
-</object>
+<img id="desks" src="/s/desks.svg" onload="SVGInject(this)" />
 
 </main>
 
+<script src="/s/desks.js"></script>
+<script>refresh();</script>
+
 <%- include('_footer.ejs'); %>
+

@@ -114,3 +114,13 @@ main {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Inside the SVG */
+
+.desk {
+  cursor: pointer;
+}
+
+.desk.available:hover {
+  stroke: green !important;
+}
