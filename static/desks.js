@@ -18,7 +18,6 @@ let bookables = null;
 
 const initFromSvg = () => {
   const svgData = document.querySelector("svg");
-  console.log(svgData);
   if (!svgData) {
     // Try again soon
     setTimeout(refresh, 0);
@@ -40,7 +39,6 @@ const initFromSvg = () => {
     desk.classList.add("available");
     bookables[desk.id] = new Bookable(desk.id);
   }
-  console.log(bookables);
 };
 
 const deskIsAvailable = (deskId) => {
@@ -76,8 +74,39 @@ const bookDesk = (deskId) => {
 
 const refreshDeskUi = (deskId) => {
   const el = document.querySelector("#" + deskId);
-  console.log(el);
-  el.classList.toggle("available", deskIsAvailable(deskId));
+  const userId = loggedInUserEmail.replace("@", "-").replaceAll(".", "-");
+  const occupant = bookables[deskId].occupant;
+  el.classList.toggle("available", occupant === null);
+  if (occupant) {
+    const avatar = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "image"
+    );
+    avatar.setAttributeNS(
+      "http://www.w3.org/1999/xlink",
+      "href",
+      loggedInUserAvatar
+    );
+
+    // Remove avatar if already somewhere.
+    const toDelete = document.querySelector("#" + userId);
+    console.log(toDelete);
+    if (toDelete) {
+      toDelete.parentNode.removeChild(toDelete);
+    }
+
+    const size = Math.min(el.getAttribute("width"), el.getAttribute("height"));
+    avatar.setAttribute("id", userId);
+    avatar.setAttribute("width", size);
+    avatar.setAttribute("height", size);
+    avatar.setAttribute("x", el.getAttribute("x"));
+    avatar.setAttribute("y", el.getAttribute("y"));
+    // el.appendChild(avatar);
+    const svgData = document.querySelector("svg");
+    svgData.appendChild(avatar);
+  } else {
+    el.innerHTML = "";
+  }
 };
 
 const updateUi = () => {
