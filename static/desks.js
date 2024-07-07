@@ -1,7 +1,14 @@
 class Bookable {
   constructor(id) {
     this.id = id;
-    this.occupant = "";
+    this.occupant = null;
+  }
+}
+
+class Occupant {
+  constructor(id, avatar) {
+    this.id = id;
+    this.avatar = avatar;
   }
 }
 
@@ -37,11 +44,46 @@ const initFromSvg = () => {
 };
 
 const deskIsAvailable = (deskId) => {
-  return bookables[deskId].occupant === "";
+  return bookables[deskId].occupant === null;
+};
+
+const bookedDeskForUser = (userId) => {
+  for (let bookableId in bookables) {
+    if (bookables[bookableId].occupant?.id === userId) {
+      return bookables[bookableId];
+    }
+  }
+  return null;
+};
+
+const freeDesk = (deskId) => {
+  bookables[deskId].occupant = null;
+  updateUi();
 };
 
 const bookDesk = (deskId) => {
   console.log("Booking desk " + deskId);
+  const existing = bookedDeskForUser(loggedInUserEmail);
+  if (existing) {
+    freeDesk(existing.id);
+  }
+  bookables[deskId].occupant = new Occupant(
+    loggedInUserEmail,
+    loggedInUserAvatar
+  );
+  updateUi();
+};
+
+const refreshDeskUi = (deskId) => {
+  const el = document.querySelector("#" + deskId);
+  console.log(el);
+  el.classList.toggle("available", deskIsAvailable(deskId));
+};
+
+const updateUi = () => {
+  for (let id in bookables) {
+    refreshDeskUi(id);
+  }
 };
 
 const isInitialized = () => {
