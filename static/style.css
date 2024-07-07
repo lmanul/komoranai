@@ -1,0 +1,116 @@
+/* Global */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: #eee;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Roboto, Arial;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Title bar */
+
+#header-bg {
+  background-color: #456980;
+}
+
+header {
+  background-color: #82cbf9;
+  color: #02455d;
+  margin: 0 auto;
+  max-width: 130ex;
+  padding: 0 2ex;
+  position: relative;
+  text-align: center;
+}
+
+header a {
+  color: #02455d;
+  text-decoration: none;
+}
+
+#logo {
+  height: 150px;
+  vertical-align: middle;
+}
+
+#title-block {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#title {
+  font-size: 200%;
+}
+
+#subtitle {
+  font-size: medium;
+}
+
+#self-info {
+  display: inline-block;
+  right: 10px;
+  position: absolute;
+  top: 10px;
+}
+
+#logged-in-user-avatar {
+  display: inline-block;
+  vertical-align: middle;
+  width: 60px;
+}
+
+#logged-in-user-avatar img {
+  max-width: 100%;
+}
+
+#logout-form {
+  display: inline-block;
+}
+
+#logout-button {
+  cursor: pointer;
+  padding: 1ex;
+  vertical-align: middle;
+}
+
+/* Body */
+
+main {
+  background-color: #fff;
+  margin: 0 auto;
+  max-width: 130ex;
+  min-height: 80ex;
+  padding: 3ex 5ex;
+}
+
+#desks {
+  display: block;
+  margin: 10px auto;
+  max-width: 90%;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin: auto;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
