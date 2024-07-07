@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "dotenv": "^16.4.5",
+    "eslint": "^9.6.0",
     "nodemon": "^2.0.15"
   }
 }
