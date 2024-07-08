@@ -124,3 +124,6 @@ main {
 .desk.available:hover {
   stroke: green !important;
 }
+.avatar {
+  pointer-events: none;
+}

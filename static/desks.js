@@ -33,9 +33,10 @@ const initFromSvg = () => {
     if (!target.classList.contains("desk")) {
       return;
     }
-    console.log(target);
     if (deskIsAvailable(target.id)) {
       bookDesk(target.id);
+    } else if (target.id === bookedDeskIdForUser(loggedInUserEmail)) {
+      freeDesk(target.id);
     }
   });
   const desks = svgData.querySelectorAll(".desk");
@@ -67,7 +68,6 @@ const freeDesk = async (deskId) => {
 };
 
 const bookDesk = async (deskId) => {
-  console.log("Booking desk " + deskId);
   const existingId = bookedDeskIdForUser(loggedInUserEmail);
   if (existingId) {
     await freeDesk(existingId);
@@ -143,12 +143,10 @@ const refresh = async () => {
     window.clearTimeout(refreshTimeoutId);
   }
   if (!isInitialized()) {
-    console.log("Initializing from SVG");
     initFromSvg();
   }
   const response = await fetch("/status");
   const json = await response.text();
-  console.log("Refreshed");
   occupiedDesks = JSON.parse(json);
   updateUi();
   refreshTimeoutId = window.setTimeout(refresh, refreshInterval());
