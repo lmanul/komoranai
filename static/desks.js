@@ -1,6 +1,21 @@
 let refreshTimeoutId = 0;
 let initialized = false;
 let occupiedDesks = null;
+let lastActiveTime = Date.now();
+
+const refreshInterval = () => {
+  const idleTime = Date.now() - lastActiveTime;
+  if (idleTime < 10000) {
+    return 2000;
+  }
+  if (idleTime < 20000) {
+    return 5000;
+  }
+  if (idleTime < 60000) {
+    return 10000;
+  }
+  return 30000;
+};
 
 const initFromSvg = () => {
   const svgData = document.querySelector("svg");
@@ -9,7 +24,11 @@ const initFromSvg = () => {
     setTimeout(refresh, 0);
     return;
   }
+  svgData.addEventListener("mousemove", () => {
+    lastActiveTime = Date.now();
+  });
   svgData.addEventListener("click", (event) => {
+    lastActiveTime = Date.now();
     const target = event.target;
     if (!target.classList.contains("desk")) {
       return;
@@ -132,6 +151,5 @@ const refresh = async () => {
   console.log("Refreshed");
   occupiedDesks = JSON.parse(json);
   updateUi();
-  // TODO: exponential backoff if the user is idle.
-  refreshTimeoutId = window.setTimeout(refresh, 5000);
+  refreshTimeoutId = window.setTimeout(refresh, refreshInterval());
 };
