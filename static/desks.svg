@@ -45,7 +45,7 @@
        width="51.016178"
        height="27.65349"
        x="124.45139"
-       y="68.669434" />
+       y="46.619766" />
     <rect
        style="color:#000000;overflow:visible;fill:#bfbfbf;fill-opacity:1;stroke:#414141;stroke-width:0.501575;stroke-dasharray:none;stroke-opacity:1"
        id="rect2-5"
@@ -53,7 +53,7 @@
        width="51.016178"
        height="27.65349"
        x="180.06123"
-       y="68.669434" />
+       y="46.619766" />
     <rect
        style="color:#000000;overflow:visible;fill:#bfbfbf;fill-opacity:1;stroke:#414141;stroke-width:0.501575;stroke-dasharray:none;stroke-opacity:1"
        id="rect2-5-2"
@@ -61,7 +61,7 @@
        width="51.016178"
        height="27.65349"
        x="235.61755"
-       y="68.669434" />
+       y="46.619766" />
     <rect
        style="color:#000000;overflow:visible;fill:#bfbfbf;fill-opacity:1;stroke:#414141;stroke-width:0.501575;stroke-dasharray:none;stroke-opacity:1"
        id="rect2-7"
@@ -69,7 +69,7 @@
        width="51.016178"
        height="27.65349"
        x="124.45139"
-       y="105.42483" />
+       y="83.37516" />
     <rect
        style="color:#000000;overflow:visible;fill:#bfbfbf;fill-opacity:1;stroke:#414141;stroke-width:0.501575;stroke-dasharray:none;stroke-opacity:1"
        id="rect2-5-0"
@@ -77,7 +77,7 @@
        width="51.016178"
        height="27.65349"
        x="180.06123"
-       y="105.42483" />
+       y="83.37516" />
     <rect
        style="color:#000000;overflow:visible;fill:#bfbfbf;fill-opacity:1;stroke:#414141;stroke-width:0.501575;stroke-dasharray:none;stroke-opacity:1"
        id="rect2-5-2-9"
@@ -85,7 +85,7 @@
        width="51.016178"
        height="27.65349"
        x="235.61755"
-       y="105.42483" />
+       y="83.37516" />
     <rect
        style="color:#000000;overflow:visible;fill:#bfbfbf;fill-opacity:1;stroke:#414141;stroke-width:0.501575;stroke-dasharray:none;stroke-opacity:1"
        id="rect2-6"
@@ -93,7 +93,7 @@
        width="51.016178"
        height="27.65349"
        x="124.45139"
-       y="191.19792" />
+       y="169.14825" />
     <rect
        style="color:#000000;overflow:visible;fill:#bfbfbf;fill-opacity:1;stroke:#414141;stroke-width:0.501575;stroke-dasharray:none;stroke-opacity:1"
        id="rect2-6-3"
@@ -101,7 +101,7 @@
        width="27.65349"
        height="51.016178"
        x="92"
-       y="197.78041" />
+       y="175.73074" />
     <rect
        style="color:#000000;overflow:visible;fill:#bfbfbf;fill-opacity:1;stroke:#414141;stroke-width:0.501575;stroke-dasharray:none;stroke-opacity:1"
        id="rect2-5-26"
@@ -109,7 +109,7 @@
        width="51.016178"
        height="27.65349"
        x="180.06123"
-       y="191.19792" />
+       y="169.14825" />
     <rect
        style="color:#000000;overflow:visible;fill:#bfbfbf;fill-opacity:1;stroke:#414141;stroke-width:0.501575;stroke-dasharray:none;stroke-opacity:1"
        id="rect2-5-2-1"
@@ -117,7 +117,7 @@
        width="51.016178"
        height="27.65349"
        x="235.61755"
-       y="191.19792" />
+       y="169.14825" />
     <rect
        style="color:#000000;overflow:visible;fill:#bfbfbf;fill-opacity:1;stroke:#414141;stroke-width:0.501575;stroke-dasharray:none;stroke-opacity:1"
        id="rect2-7-8"
@@ -125,7 +125,7 @@
        width="51.016178"
        height="27.65349"
        x="124.45139"
-       y="227.95331" />
+       y="205.90364" />
     <rect
        style="color:#000000;overflow:visible;fill:#bfbfbf;fill-opacity:1;stroke:#414141;stroke-width:0.501575;stroke-dasharray:none;stroke-opacity:1"
        id="rect2-5-0-7"
@@ -133,7 +133,7 @@
        width="51.016178"
        height="27.65349"
        x="180.06123"
-       y="227.95331" />
+       y="205.90364" />
     <rect
        style="color:#000000;overflow:visible;fill:#bfbfbf;fill-opacity:1;stroke:#414141;stroke-width:0.501575;stroke-dasharray:none;stroke-opacity:1"
        id="rect2-5-2-9-9"
@@ -141,7 +141,15 @@
        width="51.016178"
        height="27.65349"
        x="235.61755"
-       y="227.95331" />
+       y="205.90364" />
+    <rect
+       style="color:#000000;overflow:visible;fill:#bfbfbf;fill-opacity:1;stroke:#414141;stroke-width:0.501575;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2-5-2-9-9-5"
+       class="desk"
+       width="51.016178"
+       height="27.65349"
+       x="161.51244"
+       y="263.75113" />
     <circle
        style="color:#000000;overflow:visible;opacity:1;fill:#bfbfbf;fill-opacity:1;stroke:#414141;stroke-width:0.564999;stroke-dasharray:none;stroke-opacity:1"
        id="path2"
