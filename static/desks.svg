@@ -98,11 +98,10 @@
        style="color:#000000;overflow:visible;fill:#bfbfbf;fill-opacity:1;stroke:#414141;stroke-width:0.501575;stroke-dasharray:none;stroke-opacity:1"
        id="rect2-6-3"
        class="desk"
-       width="51.016178"
-       height="27.65349"
-       x="197.78041"
-       y="-118.45437"
-       transform="rotate(90)" />
+       width="27.65349"
+       height="51.016178"
+       x="92"
+       y="197.78041" />
     <rect
        style="color:#000000;overflow:visible;fill:#bfbfbf;fill-opacity:1;stroke:#414141;stroke-width:0.501575;stroke-dasharray:none;stroke-opacity:1"
        id="rect2-5-26"

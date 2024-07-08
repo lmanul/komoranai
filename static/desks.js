@@ -65,8 +65,17 @@ const bookDesk = async (deskId) => {
 const renderAvatar = (deskId, userId, avatarUrl) => {
   const el = document.querySelector("#" + deskId);
 
-  const size = Math.min(el.getAttribute("width"), el.getAttribute("height"));
   if (userId) {
+    const deskWidth = parseInt(el.getAttribute("width"));
+    const deskHeight = parseInt(el.getAttribute("height"));
+    const size = Math.floor(0.75 * Math.min(deskWidth, deskHeight));
+    const x = Math.floor(
+      parseInt(el.getAttribute("x")) + (deskWidth - size) / 2
+    );
+    const y = Math.floor(
+      parseInt(el.getAttribute("y")) + (deskHeight - size) / 2
+    );
+
     const avatar = document.createElementNS(
       "http://www.w3.org/2000/svg",
       "image"
@@ -77,8 +86,8 @@ const renderAvatar = (deskId, userId, avatarUrl) => {
     avatar.setAttribute("id", userId);
     avatar.setAttribute("width", size);
     avatar.setAttribute("height", size);
-    avatar.setAttribute("x", el.getAttribute("x"));
-    avatar.setAttribute("y", el.getAttribute("y"));
+    avatar.setAttribute("x", x);
+    avatar.setAttribute("y", y);
     const svgEl = document.querySelector("svg");
     svgEl.appendChild(avatar);
   }
