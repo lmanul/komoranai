@@ -1,7 +1,15 @@
 require('dotenv').config()
 const reload = require("reload");
 
+const fs = require('fs');
+const http = require('http');
+const https = require('https');
 const express = require('express');
+
+const options = {
+    key: fs.readFileSync('./ssl/privkey.pem'),
+    cert: fs.readFileSync('./ssl/fullchain.pem'),
+};
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -31,8 +39,8 @@ app.post("/logout", (req, res) => {
   res.redirect("/login");
 });
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+const server = https.createServer(options, app).listen(port, function(){
+  console.log("Express server listening on port " + port);
 });
 
 reload(app);
