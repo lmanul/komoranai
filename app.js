@@ -39,6 +39,11 @@ app.post("/logout", (req, res) => {
   res.redirect("/login");
 });
 
+app.get("/logout", (req, res) => {
+  req.logOut();
+  res.redirect("/login");
+});
+
 const server = https.createServer(options, app).listen(port, function () {
   console.log("Express server listening on port " + port);
 });
