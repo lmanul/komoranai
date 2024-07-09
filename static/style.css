@@ -12,6 +12,8 @@ html, body {
 
 body {
   font-family: Roboto, Arial;
+  max-height: 95vh;
+    overflow: hidden;
 }
 
 a {
@@ -97,7 +99,7 @@ main {
 #desks {
   display: block;
   margin: 10px auto;
-  max-width: 90%;
+  max-width: 100%;
 }
 
 .spinner {

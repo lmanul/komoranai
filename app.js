@@ -1,4 +1,5 @@
 require('dotenv').config()
+const reload = require("reload");
 
 const express = require('express');
 
@@ -33,6 +34,8 @@ app.post("/logout", (req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+reload(app);
 
 // User-visible paths
 
