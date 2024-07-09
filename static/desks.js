@@ -24,10 +24,10 @@ const initFromSvg = () => {
     setTimeout(refresh, 0);
     return;
   }
-  svgData.addEventListener("mousemove", () => {
+  document.body.addEventListener("mousemove", () => {
     lastActiveTime = Date.now();
   });
-  svgData.addEventListener("click", (event) => {
+  document.body.addEventListener("click", (event) => {
     lastActiveTime = Date.now();
     const target = event.target;
     if (!target.classList.contains("desk")) {
@@ -39,7 +39,7 @@ const initFromSvg = () => {
       freeDesk(target.id);
     }
   });
-  const desks = svgData.querySelectorAll(".desk");
+  const desks = document.querySelectorAll(".desk");
   occupiedDesks = {};
   for (const desk of desks) {
     desk.classList.add("available");
@@ -120,9 +120,8 @@ const renderAvatar = (deskId, userId, avatarUrl) => {
     // avatarContainer.setAttribute("opacity", "0.01");
     const title = document.createElement("title");
     title.textContent = userId;
-    const svgEl = document.querySelector("svg");
     // avatarContainer.appendChild(title);
-    svgEl.appendChild(avatar);
+    el.parentNode.appendChild(avatar);
     // svgEl.appendChild(avatarContainer);
   }
 };

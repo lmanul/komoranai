@@ -107,13 +107,18 @@ main {
 #occupied-count {
   color: darkred;
 }
+
 #desks {
-  display: block;
   margin: 10px auto;
-  max-height: 90vh;
-    max-width: 95%;
+  max-width: 95%;
 }
 
+svg {
+  display: inline-block;
+  vertical-align: top;
+  height: 70ex;
+  width: 70ex;
+}
 .spinner {
   border: 8px solid #f3f3f3; /* Light grey */
   border-top: 8px solid #3498db; /* Blue */
@@ -139,5 +144,5 @@ main {
   stroke: green !important;
 }
 .avatar {
-  /* pointer-events: none; */
+  pointer-events: none;
 }
