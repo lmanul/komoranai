@@ -1,23 +1,23 @@
-require('dotenv').config()
+require("dotenv").config();
 const reload = require("reload");
 
-const fs = require('fs');
-const http = require('http');
-const https = require('https');
-const express = require('express');
+const fs = require("fs");
+const http = require("http");
+const https = require("https");
+const express = require("express");
 
 const options = {
-    key: fs.readFileSync('./ssl/privkey.pem'),
-    cert: fs.readFileSync('./ssl/fullchain.pem'),
+  key: fs.readFileSync("./ssl/privkey.pem"),
+  cert: fs.readFileSync("./ssl/fullchain.pem"),
 };
 
 const app = express();
 const port = process.env.PORT || 8080;
 
-const authentication = require('./authentication');
-const util = require('./util');
+const authentication = require("./authentication");
+const util = require("./util");
 
-const { allocate, status, deallocate, move } = require("./allocations.js");
+const { allocate, status, deallocate } = require("./allocations.js");
 
 app.set("view engine", "ejs");
 app.use("/s", express.static("static", {}));
@@ -39,7 +39,7 @@ app.post("/logout", (req, res) => {
   res.redirect("/login");
 });
 
-const server = https.createServer(options, app).listen(port, function(){
+const server = https.createServer(options, app).listen(port, function () {
   console.log("Express server listening on port " + port);
 });
 
@@ -73,17 +73,3 @@ app.get("/unbook/:deskId", authentication.checkAuthenticated, (req, res) => {
   deallocate(req.params.deskId);
   res.status(200).end();
 });
-
-app.get(
-  "/move/:userId/:userAvatar/:oldDeskId/:newDeskId",
-  authentication.checkAuthenticated,
-  (req, res) => {
-    move(
-      req.params.userId,
-      req.params.userAvatar,
-      req.params.oldDeskId,
-      req.params.newDeskId
-    );
-    res.status(200).end();
-  }
-);
