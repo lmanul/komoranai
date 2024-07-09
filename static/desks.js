@@ -95,6 +95,10 @@ const renderAvatar = (deskId, userId, avatarUrl) => {
       parseInt(el.getAttribute("y")) + (deskHeight - size) / 2
     );
 
+    // const avatarContainer = document.createElementNS(
+    //   "http://www.w3.org/2000/svg",
+    //   "rect"
+    // );
     const avatar = document.createElementNS(
       "http://www.w3.org/2000/svg",
       "image"
@@ -102,13 +106,24 @@ const renderAvatar = (deskId, userId, avatarUrl) => {
     avatar.setAttributeNS("http://www.w3.org/1999/xlink", "href", avatarUrl);
 
     avatar.classList.add("avatar");
+    // avatarContainer.classList.add("avatar-container");
     avatar.setAttribute("id", userId);
     avatar.setAttribute("width", size);
     avatar.setAttribute("height", size);
     avatar.setAttribute("x", x);
     avatar.setAttribute("y", y);
+    // avatarContainer.setAttribute("width", size);
+    // avatarContainer.setAttribute("height", size);
+    // avatarContainer.setAttribute("x", x);
+    // avatarContainer.setAttribute("y", y);
+    // avatarContainer.setAttribute("fill", "#00c");
+    // avatarContainer.setAttribute("opacity", "0.01");
+    const title = document.createElement("title");
+    title.textContent = userId;
     const svgEl = document.querySelector("svg");
+    // avatarContainer.appendChild(title);
     svgEl.appendChild(avatar);
+    // svgEl.appendChild(avatarContainer);
   }
 };
 
@@ -125,6 +140,7 @@ const refreshDeskUi = (deskId) => {
 const updateUi = () => {
   // Clean existing avatars
   const avatars = document.querySelectorAll(".avatar");
+  // const avatars = document.querySelectorAll(".avatar-container");
   for (let one of avatars) {
     one.parentNode.removeChild(one);
   }
@@ -132,6 +148,16 @@ const updateUi = () => {
   for (let desk of desks) {
     refreshDeskUi(desk.getAttribute("id"));
   }
+
+  const totalDeskCount = desks.length;
+  const occupiedDeskCount = Object.keys(occupiedDesks).length;
+
+  document.getElementById("available-count").textContent = new String(
+    totalDeskCount - occupiedDeskCount
+  );
+  document.getElementById("occupied-count").textContent = new String(
+    occupiedDeskCount
+  );
 };
 
 const isInitialized = () => {

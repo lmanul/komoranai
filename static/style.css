@@ -13,7 +13,7 @@ html, body {
 body {
   font-family: Roboto, Arial;
   max-height: 95vh;
-    overflow: hidden;
+  text-align: center;
 }
 
 a {
@@ -91,15 +91,27 @@ header a {
 main {
   background-color: #fff;
   margin: 0 auto;
-  max-width: 130ex;
   min-height: 80ex;
   padding: 3ex 5ex;
 }
 
+#occupancy-available,
+#occupancy-occupied {
+  font-size: xx-large;
+}
+
+#available-count {
+  color: darkgreen;
+}
+
+#occupied-count {
+  color: darkred;
+}
 #desks {
   display: block;
   margin: 10px auto;
-  max-width: 100%;
+  max-height: 90vh;
+    max-width: 95%;
 }
 
 .spinner {
@@ -127,5 +139,5 @@ main {
   stroke: green !important;
 }
 .avatar {
-  pointer-events: none;
+  /* pointer-events: none; */
 }
