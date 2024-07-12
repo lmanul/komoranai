@@ -6,9 +6,9 @@ const http = require("http");
 const https = require("https");
 const express = require("express");
 
-const port = process.env.PORT || 8080;
+const port = parseInt(process.env.PORT) || 8080;
 
-const options = {};
+let options = {};
 
 const isProd = (port === 443);
 

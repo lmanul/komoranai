@@ -59,7 +59,6 @@ const checkAuthenticated = (req, res, next) => {
 };
 
 const setIsProd = (flag) => {
-  console.log('Is prod:', flag);
   isProd = flag;
 };
 
