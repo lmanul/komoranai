@@ -2,8 +2,10 @@ const session = require('cookie-session')
 const passport = require('passport')
 const GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
 
+let isProd = false;
+
 const setupAuthentication = (app) => {
-  if (!process.env.KOMORANAI_GOOGLE_CLIENT_ID || !process.env.KOMORANAI_GOOGLE_CLIENT_SECRET) {
+  if (isProd && (!process.env.KOMORANAI_GOOGLE_CLIENT_ID || !process.env.KOMORANAI_GOOGLE_CLIENT_SECRET)) {
     console.log('Please set these two environment variables before starting ' +
                 'this server: KOMORANAI_GOOGLE_CLIENT_ID and ' +
                 'KOMORANAI_GOOGLE_CLIENT_SECRET. You ' +
@@ -45,6 +47,9 @@ const setupAuthentication = (app) => {
 };
 
 const checkAuthenticated = (req, res, next) => {
+  if (!isProd) {
+    return next();
+  }
   if (req.isAuthenticated() && (!process.env.KOMORANAI_DOMAIN ||
       req.user.email.endsWith(process.env.KOMORANAI_DOMAIN))) {
     return next();
@@ -53,7 +58,13 @@ const checkAuthenticated = (req, res, next) => {
   res.redirect("/login");
 };
 
+const setIsProd = (flag) => {
+  console.log('Is prod:', flag);
+  isProd = flag;
+};
+
 module.exports = {
   checkAuthenticated,
+  setIsProd,
   setupAuthentication,
 };

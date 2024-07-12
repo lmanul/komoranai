@@ -1,13 +1,13 @@
-const getLoggedInUserDetails = (req) => {
+const getLoggedInUserDetails = (req, isProd) => {
   return {
-    'loggedInUserAvatar': req.user.picture,
-    'loggedInUserEmail': req.user.email,
-    'loggedInUserDisplayName': req.user.displayName,
+    'loggedInUserAvatar': isProd ? req.user.picture : '/s/generic_profile.png',
+    'loggedInUserEmail': isProd ? req.user.email : 'tester@test.com',
+    'loggedInUserDisplayName': isProd ? req.user.displayName : 'Tester',
   };
 };
 
-const addLoggedInUserDetails = (obj, req) => {
-  const details = getLoggedInUserDetails(req);
+const addLoggedInUserDetails = (obj, req, isProd) => {
+  const details = getLoggedInUserDetails(req, isProd);
   // Spelling it out for JS parsers thar don't understand spreading.
   obj['loggedInUserAvatar'] = details['loggedInUserAvatar'];
   obj['loggedInUserEmail'] = details['loggedInUserEmail'];

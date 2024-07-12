@@ -6,15 +6,24 @@ const http = require("http");
 const https = require("https");
 const express = require("express");
 
-const options = {
+const port = process.env.PORT || 8080;
+
+const options = {};
+
+const isProd = (port === 443);
+
+if (isProd) {
+  options = {
+  ...options,
   key: fs.readFileSync("./ssl/privkey.pem"),
   cert: fs.readFileSync("./ssl/fullchain.pem"),
+  }
 };
 
 const app = express();
-const port = process.env.PORT || 8080;
 
 const authentication = require("./authentication");
+authentication.setIsProd(isProd);
 const util = require("./util");
 
 const { allocate, status, deallocate } = require("./allocations.js");
@@ -44,18 +53,13 @@ app.get("/logout", (req, res) => {
   res.redirect("/login");
 });
 
-const server = https.createServer(options, app).listen(port, function () {
-  console.log("Express server listening on port " + port);
-});
-
-reload(app);
-
 // User-visible paths
 
 app.get("/", authentication.checkAuthenticated, (req, res) => {
+  console.log('render');
   const details = util.getLoggedInUserDetails(req);
   const data = {};
-  util.addLoggedInUserDetails(data, req);
+  util.addLoggedInUserDetails(data, req, isProd);
   res.render("home", data);
 });
 
@@ -78,3 +82,17 @@ app.get("/unbook/:deskId", authentication.checkAuthenticated, (req, res) => {
   deallocate(req.params.deskId);
   res.status(200).end();
 });
+
+if (!isProd) {
+  reload(app);
+}
+
+if (isProd) {
+  const server = https.createServer(options, app).listen(port, function () {
+    console.log("Express server listening on port " + port);
+  });
+} else {
+  app.listen(port, () => {
+    console.log('Listening on :' + port);
+  });
+}
