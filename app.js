@@ -56,7 +56,6 @@ app.get("/logout", (req, res) => {
 // User-visible paths
 
 app.get("/", authentication.checkAuthenticated, (req, res) => {
-  console.log('render');
   const details = util.getLoggedInUserDetails(req);
   const data = {};
   util.addLoggedInUserDetails(data, req, isProd);
