@@ -1,5 +1,5 @@
 {
-  "name": "komoranai",
+  "name": "komorazu",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lmanul/komoranai.git"
+    "url": "git+https://github.com/lmanul/komorazu.git"
   },
   "author": "Manu Cornet",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lmanul/komoranai/issues"
+    "url": "https://github.com/lmanul/komorazu/issues"
   },
-  "homepage": "https://github.com/lmanul/komoranai#readme",
+  "homepage": "https://github.com/lmanul/komorazu#readme",
   "dependencies": {
     "cookie-session": "^2.1.0",
     "ejs": "^3.1.6",

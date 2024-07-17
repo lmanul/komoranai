@@ -1,1 +1,1 @@
-# komoranai
+# komorazu
