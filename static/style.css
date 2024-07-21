@@ -96,7 +96,8 @@ main {
 }
 
 #occupancy-available,
-#occupancy-occupied {
+#occupancy-occupied,
+#clock-container {
   font-size: xx-large;
 }
 

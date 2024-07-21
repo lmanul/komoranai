@@ -3,6 +3,10 @@ let initialized = false;
 let occupiedDesks = null;
 let lastActiveTime = Date.now();
 
+const isIdle = () => {
+  return Date.now() - lastActiveTime > 60000;
+};
+
 const refreshInterval = () => {
   const idleTime = Date.now() - lastActiveTime;
   if (idleTime < 10000) {
@@ -25,6 +29,9 @@ const initFromSvg = () => {
     return;
   }
   document.body.addEventListener("mousemove", () => {
+    if (isIdle()) {
+      refresh();
+    }
     lastActiveTime = Date.now();
   });
   document.body.addEventListener("click", (event) => {
@@ -157,6 +164,10 @@ const updateUi = () => {
   document.getElementById("occupied-count").textContent = new String(
     occupiedDeskCount
   );
+  document.getElementById("clock").textContent = new Date().toLocaleTimeString('en-UK', {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
 };
 
 const isInitialized = () => {
