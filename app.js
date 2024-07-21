@@ -83,15 +83,12 @@ app.get("/unbook/:deskId", authentication.checkAuthenticated, (req, res) => {
   res.status(200).end();
 });
 
-if (!isProd) {
-  reload(app);
-}
-
 if (isProd) {
   const server = https.createServer(options, app).listen(port, function () {
     console.log("Express server listening on port " + port);
   });
 } else {
+  reload(app);
   app.listen(port, () => {
     console.log('Listening on :' + port);
   });
