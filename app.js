@@ -40,6 +40,7 @@ app.get("/login", (req, res) => {
     loggedInUserAvatar: null,
     loggedInUserEmail: null,
     domain: process.env.KOMORAZU_DOMAIN,
+    isProd,
   });
 });
 
