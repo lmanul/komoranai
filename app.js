@@ -39,7 +39,7 @@ app.get("/login", (req, res) => {
   res.render("login.ejs", {
     loggedInUserAvatar: null,
     loggedInUserEmail: null,
-    domain: process.env.KOMORANAI_DOMAIN,
+    domain: process.env.KOMORAZU_DOMAIN,
   });
 });
 
