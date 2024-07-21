@@ -59,6 +59,7 @@ app.get("/", authentication.checkAuthenticated, (req, res) => {
   const details = util.getLoggedInUserDetails(req);
   const data = {};
   util.addLoggedInUserDetails(data, req, isProd);
+  data.isProd = isProd;
   res.render("home", data);
 });
 

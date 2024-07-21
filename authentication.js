@@ -12,6 +12,9 @@ const setupAuthentication = (app) => {
                 'can get those from https://console.cloud.google.com/apis/credentials');
     process.exit();
   }
+  if (!isProd) {
+    return;
+  }
   app.use(session({ secret: "secret", resave: false, saveUninitialized: false}));
   app.use(passport.initialize());
   app.use(passport.session());
